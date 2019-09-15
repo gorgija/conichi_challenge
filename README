@@ -1,0 +1,22 @@
+
+=======================  Simple Valute Convertor and VAT number validator service ========================
+
+    Service is run from packaged jar file and is Spring Boot implementation of JavaEE standard with JavaSE 8 library
+    
+    Running options include:
+
+    - Standalone JAR file execution:
+        just execute command "mvn clean package" and in folder "target" there is ".jar" file which you can execute with 
+command: "java -jar convertor-1.jar"
+    
+    - Service ( Containerizated ) Execution:
+        In main app root directory first run "docker build -t (name of docker image) ." and then simple 
+"docker run -it -p 8081:8081 (name of docker image)"
+       
+    - Building and running service trough maven fabric8 plugin which also is making Docker resources and Kubernetes yaml files.
+        Just run "mvn fabric8:build -PDocker" and "tar" compresed file with needed resources is generated.
+        Also there is "mvn fabric8:build -PJib" command which if you are logged on kuberenetes or openshift cluster will 
+create s2i from created jar file and deploy that image to k8s or openshift cluster.
+
+
+    On endpoint "http://[name of deployed service hostname]:[8081]/api/currency/all" there is all available currency codes.
